@@ -1,6 +1,8 @@
-/* Дополнительные стили для страницы - добавьте в конец файла style.css */
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ - ДОБАВЬТЕ В КОНЕЦ ВАШЕГО STYLE.CSS */
 
-/* Тренеры - новая сетка */
+/* ===== МАРКЕТИНГОВЫЕ БЛОКИ ===== */
+
+/* Тренеры - сетка и карточки */
 .trainers-grid {
     display: flex;
     flex-direction: column;
@@ -30,20 +32,26 @@
     background: linear-gradient(to right, var(--white), var(--primary-light));
 }
 
+@media (max-width: 992px) {
+    .trainer-card {
+        grid-template-columns: 1fr;
+    }
+}
+
 .trainer-image-container {
     position: relative;
 }
 
-.trainer-image-frame {
+.image-frame {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 350px;
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-md);
 }
 
-.trainer-placeholder {
+.image-placeholder {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, var(--primary-light), var(--light-gray));
@@ -57,19 +65,13 @@
 
 .placeholder-icon {
     font-size: 64px;
-    animation: gentleFloat 3s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
 }
 
-.placeholder-name {
-    font-size: 24px;
-    font-weight: 700;
+.placeholder-text {
+    font-size: 20px;
+    font-weight: 600;
     color: var(--primary-dark);
-}
-
-.placeholder-title {
-    font-size: 16px;
-    color: var(--dark);
-    opacity: 0.8;
 }
 
 .trainer-photo {
@@ -79,10 +81,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
 }
 
-.trainer-upload-overlay {
+.upload-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -97,14 +98,13 @@
     opacity: 0;
     transition: var(--transition);
     cursor: pointer;
-    z-index: 10;
 }
 
-.trainer-image-frame:hover .trainer-upload-overlay {
+.image-frame:hover .upload-overlay {
     opacity: 1;
 }
 
-.trainer-upload-overlay i {
+.upload-overlay i {
     font-size: 28px;
     background: var(--primary);
     width: 50px;
@@ -115,11 +115,7 @@
     justify-content: center;
 }
 
-.hidden-input {
-    display: none;
-}
-
-.trainer-info {
+.trainer-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,7 +127,7 @@
     background: var(--gradient);
     color: white;
     border-radius: 30px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     margin-bottom: 16px;
     align-self: flex-start;
@@ -148,25 +144,25 @@
 .trainer-name {
     font-size: 32px;
     font-weight: 700;
-    color: var(--dark);
     margin-bottom: 8px;
+    color: var(--dark);
 }
 
-.trainer-specialty {
+.trainer-title {
     font-size: 18px;
     color: var(--primary);
     font-weight: 600;
     margin-bottom: 24px;
 }
 
-.trainer-achievements {
+.achievement-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin-bottom: 24px;
 }
 
-.achievement-item {
+.achievement {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -177,44 +173,75 @@
     font-weight: 500;
 }
 
-.achievement-item i {
-    color: var(--primary);
-}
-
-.trainer-features-list {
-    list-style: none;
+.trainer-stats {
+    display: flex;
+    gap: 24px;
     margin-bottom: 24px;
 }
 
-.trainer-features-list li {
+.stat-big {
+    text-align: center;
+}
+
+.stat-big-number {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary-dark);
+    line-height: 1;
+}
+
+.stat-big-label {
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.result-showcase {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.result-card {
+    flex: 1;
+    padding: 16px;
+    background: var(--gradient-light);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.result-number {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+
+.result-label {
+    font-size: 12px;
     color: var(--dark);
 }
 
-.trainer-features-list i {
-    color: var(--primary);
-    width: 20px;
-}
-
-.trainer-testimonial {
-    padding: 16px;
+.testimonial-card {
+    padding: 20px;
     background: var(--light-gray);
     border-radius: var(--border-radius);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     border-left: 4px solid var(--primary);
 }
 
-.trainer-testimonial i {
+.testimonial-card.blue {
+    border-left-color: #4169E1;
+}
+
+.testimonial-card i {
     color: var(--primary);
     opacity: 0.5;
     font-size: 20px;
     margin-bottom: 8px;
 }
 
-.trainer-testimonial p {
+.testimonial-card p {
     font-style: italic;
     margin-bottom: 8px;
 }
@@ -224,33 +251,29 @@
     color: var(--gray);
 }
 
-.trainer-stats-mini {
+.trainer-features {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.trainer-features li {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    color: var(--dark);
 }
 
-.mini-stat {
-    text-align: center;
-}
-
-.mini-stat-number {
-    display: block;
-    font-size: 24px;
-    font-weight: 700;
+.trainer-features i {
     color: var(--primary);
+    width: 20px;
 }
 
-.mini-stat-label {
-    font-size: 12px;
-    color: var(--gray);
-}
-
-.trainer-tags {
+.tags-group {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .tag {
@@ -260,6 +283,19 @@
     font-size: 13px;
     color: var(--dark);
     font-weight: 500;
+}
+
+.trainer-cta {
+    margin-top: 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--light-gray);
+}
+
+.trainer-cta-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--error);
+    margin-bottom: 16px;
 }
 
 .btn-trainer {
@@ -273,9 +309,6 @@
     border-radius: 30px;
     font-weight: 600;
     transition: var(--transition);
-    align-self: flex-start;
-    border: none;
-    cursor: pointer;
 }
 
 .btn-trainer:hover {
@@ -291,55 +324,209 @@
     background: linear-gradient(135deg, #4169E1, #0000CD);
 }
 
+/* Результаты клиентов */
+.results {
+    padding: 80px 0;
+    background: var(--light-gray);
+}
+
+.results-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+@media (max-width: 992px) {
+    .results-showcase {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .results-showcase {
+        grid-template-columns: 1fr;
+    }
+}
+
+.result-card-large {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.result-card-large:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.result-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.result-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result-metric {
+    margin-bottom: 16px;
+}
+
+.metric-number {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+
+.metric-label {
+    font-size: 18px;
+    color: var(--gray);
+    margin-left: 4px;
+}
+
+.result-story {
+    font-style: italic;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.result-author {
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.results-cta {
+    margin-top: 40px;
+    text-align: center;
+    padding: 40px;
+    background: var(--gradient);
+    border-radius: var(--border-radius-lg);
+    color: white;
+}
+
+.cta-text {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.results-cta .btn-primary {
+    background: white;
+    color: var(--primary-dark);
+    border: none;
+}
+
+.results-cta .btn-primary:hover {
+    background: var(--primary-light);
+}
+
+/* Преимущества */
+.advantages {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+@media (max-width: 992px) {
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.advantage-item {
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--light-gray);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.advantage-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.advantage-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.advantage-item h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.advantage-item p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
 /* Навигация по ценам */
 .pricing-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 }
 
-.pricing-nav-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.pricing-nav-btn {
     padding: 12px 24px;
     background: var(--white);
     border: 1px solid var(--light-gray);
     border-radius: 30px;
+    font-weight: 600;
     color: var(--dark);
-    text-decoration: none;
-    font-weight: 500;
+    cursor: pointer;
     transition: var(--transition);
 }
 
-.pricing-nav-item:hover {
-    background: var(--primary);
+.pricing-nav-btn:hover,
+.pricing-nav-btn.active {
+    background: var(--gradient);
     color: white;
     border-color: var(--primary);
 }
 
-.pricing-nav-item i {
-    font-size: 16px;
-}
-
 /* Категории цен */
 .pricing-category {
-    margin-bottom: 60px;
-    padding: 40px;
-    background: var(--white);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
+    display: none;
+    margin-bottom: 40px;
+}
+
+.pricing-category.active {
+    display: block;
 }
 
 .category-header {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 32px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--light-gray);
+    margin-bottom: 24px;
 }
 
 .category-icon {
@@ -351,15 +538,6 @@
     font-size: 24px;
     font-weight: 700;
     color: var(--dark);
-}
-
-.category-badge {
-    margin-left: auto;
-    padding: 8px 16px;
-    background: var(--primary-light);
-    border-radius: 30px;
-    font-size: 14px;
-    color: var(--primary-dark);
 }
 
 /* Чемпионский баннер */
@@ -383,44 +561,52 @@
     font-size: 12px;
     letter-spacing: 2px;
     margin-bottom: 12px;
+    font-weight: 600;
 }
 
 /* Разделение по времени */
-.time-split-grid {
+.time-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     margin-bottom: 30px;
 }
 
-.time-zone {
+@media (max-width: 768px) {
+    .time-split {
+        grid-template-columns: 1fr;
+    }
+}
+
+.time-slot {
     padding: 24px;
     background: var(--light-gray);
     border-radius: var(--border-radius);
 }
 
-.time-zone.morning {
+.time-slot.morning {
     background: linear-gradient(145deg, #FFF9E6, #FFE4B5);
 }
 
-.time-zone.evening {
+.time-slot.evening {
     background: linear-gradient(145deg, #E6F0FF, #B0C4DE);
 }
 
-.time-zone-header {
+.time-slot-header {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 20px;
 }
 
-.time-zone-header i {
+.time-slot-header i {
     font-size: 24px;
 }
 
-.time-zone-header h4 {
+.time-slot-header h4 {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
+    margin: 0;
 }
 
 .time-badge {
@@ -429,6 +615,7 @@
     background: rgba(255,255,255,0.5);
     border-radius: 20px;
     font-size: 13px;
+    font-weight: 600;
 }
 
 .time-prices {
@@ -437,144 +624,158 @@
     gap: 12px;
 }
 
-.time-price-item {
+.time-price {
     display: flex;
     align-items: center;
     padding: 8px 0;
     border-bottom: 1px dashed rgba(0,0,0,0.1);
 }
 
-.price-label {
+.time-price span:first-child {
     flex: 1;
     color: var(--dark);
 }
 
-.price-amount {
-    font-weight: 700;
+.time-price strong {
+    font-size: 18px;
     color: var(--primary-dark);
     margin-right: 12px;
 }
 
-.price-save-small {
+.save {
     font-size: 12px;
     color: var(--success);
     font-weight: 600;
+    background: rgba(76, 175, 80, 0.1);
+    padding: 2px 8px;
+    border-radius: 20px;
 }
 
 /* Специальные предложения */
-.gym-specials {
+.special-offers {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     margin-top: 30px;
 }
 
-.special-card {
+@media (max-width: 768px) {
+    .special-offers {
+        grid-template-columns: 1fr;
+    }
+}
+
+.offer-card {
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 24px;
-    background: var(--light-gray);
+    background: var(--white);
     border-radius: var(--border-radius);
+    border: 1px solid var(--light-gray);
 }
 
-.special-card.student {
-    background: linear-gradient(145deg, var(--primary-light), #E8F5E9);
+.offer-card.unlimited {
+    background: linear-gradient(145deg, var(--white), var(--primary-light));
 }
 
-.special-icon {
+.offer-card.student {
+    background: linear-gradient(145deg, var(--white), #FFF3E0);
+}
+
+.offer-icon {
     font-size: 36px;
 }
 
-.special-content h4 {
+.offer-content h4 {
     font-size: 18px;
+    font-weight: 700;
     margin-bottom: 8px;
 }
 
-.special-price {
+.offer-price {
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--primary-dark);
     margin-bottom: 4px;
 }
 
-.special-discount {
+.offer-discount {
     font-size: 28px;
     font-weight: 800;
     color: var(--success);
 }
 
-/* Сигнатурные карточки */
-.signature-showcase {
+/* Персональное предложение */
+.personal-offer {
     max-width: 600px;
     margin: 0 auto;
-}
-
-.signature-card {
-    padding: 32px;
+    padding: 40px;
     background: linear-gradient(145deg, var(--white), var(--primary-light));
     border-radius: var(--border-radius-lg);
+    text-align: center;
 }
 
-.signature-price-tag {
-    margin-bottom: 24px;
-}
-
-.big-price {
-    font-size: 56px;
+.offer-price-big {
+    font-size: 64px;
     font-weight: 800;
     color: var(--primary-dark);
 }
 
-.price-period {
-    font-size: 18px;
+.offer-period {
+    font-size: 20px;
     color: var(--gray);
 }
 
-.signature-features {
+.offer-features {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    margin-bottom: 24px;
+    margin: 24px 0;
+    text-align: left;
 }
 
-.sig-feature {
+.offer-features .feature {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 14px;
 }
 
-.sig-feature i {
-    color: var(--success);
-}
-
-.signature-note {
+.offer-bonus {
     padding: 16px;
-    background: rgba(255,255,255,0.5);
-    border-radius: var(--border-radius-sm);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-}
-
-.signature-bonus {
-    padding: 12px;
     background: linear-gradient(135deg, #FFD700, #FFA500);
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius);
     color: white;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.offer-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gray);
+    font-size: 14px;
 }
 
 /* Нутрициология */
 .nutrition-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .nutrition-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .nutrition-card {
@@ -597,6 +798,7 @@
 
 .nutrition-card h4 {
     font-size: 22px;
+    font-weight: 700;
     margin-bottom: 16px;
 }
 
@@ -612,55 +814,74 @@
     margin-bottom: 24px;
 }
 
-.nutrition-features {
+.nutrition-card ul {
     list-style: none;
     text-align: left;
 }
 
-.nutrition-features li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.nutrition-card li {
     margin-bottom: 12px;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.nutrition-features i {
+.nutrition-card i {
     color: var(--success);
 }
 
-.nutrition-bundle {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    border-radius: var(--border-radius-lg);
-    padding: 32px;
-    color: white;
-}
-
-.bundle-content {
+/* Комплексное предложение */
+.bundle-offer {
     display: flex;
     align-items: center;
     gap: 24px;
+    padding: 32px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: var(--border-radius-lg);
+    color: white;
 }
 
-.bundle-content i {
+@media (max-width: 768px) {
+    .bundle-offer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.bundle-icon {
     font-size: 48px;
+}
+
+.bundle-content h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.bundle-content p {
+    margin-bottom: 16px;
+    opacity: 0.9;
+}
+
+.bundle-price-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .bundle-price {
     font-size: 32px;
     font-weight: 800;
-    margin-right: 16px;
 }
 
 .bundle-old {
     font-size: 20px;
     text-decoration: line-through;
     opacity: 0.7;
-    margin-right: 16px;
 }
 
 .bundle-save {
-    display: inline-block;
     padding: 6px 16px;
     background: white;
     color: var(--primary-dark);
@@ -669,7 +890,7 @@
 }
 
 /* Режим работы */
-.working-hours-block {
+.working-hours {
     margin-top: 60px;
     padding: 32px;
     background: var(--light-gray);
@@ -706,99 +927,22 @@
     border-bottom: none;
 }
 
-.day {
+.hours-row .day {
     font-weight: 600;
     color: var(--dark);
 }
 
-.time {
+.hours-row .time {
     color: var(--primary-dark);
     font-weight: 500;
 }
 
-.time.holiday {
+.hours-row.holiday .time {
     color: var(--error);
-    font-weight: 600;
-}
-
-/* Футер цен */
-.pricing-footer {
-    margin-top: 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 32px;
-    background: var(--white);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-sm);
-}
-
-.guarantee-badge {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.guarantee-badge i {
-    font-size: 24px;
-    color: var(--success);
-}
-
-.payment-methods {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.payment-methods i {
-    font-size: 28px;
-    color: var(--gray);
-}
-
-/* Адаптивность */
-@media (max-width: 992px) {
-    .trainer-card {
-        grid-template-columns: 1fr;
-    }
-    
-    .trainer-image-frame {
-        height: 350px;
-        max-width: 350px;
-        margin: 0 auto;
-    }
-    
-    .time-split-grid,
-    .gym-specials,
-    .nutrition-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .category-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .category-badge {
-        margin-left: 0;
-    }
-    
-    .hours-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    
-    .pricing-footer {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
 }
 
 /* Анимации */
-@keyframes gentleFloat {
+@keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
